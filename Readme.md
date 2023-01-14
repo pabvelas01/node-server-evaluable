@@ -49,5 +49,21 @@ curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com"
  las clases efectivas dictadas (pueden haber feriados o suspension de clases, lo que no aplicaria como
  inasistencia del alumno)  
 
+* 2- Listado de justificaciones por certamen o test para la asignatura Y de la carrera Z, en el semestre.  
+R: Se debe saber cuando es el certamen y test (Evaluacion->tipificada en tipo Evaluacion y su respectiva fecha de aplicacion) con ello se podria hacer el mach con las fechas de inicio y termino del reg_justificacion 
+para responder a la query solicitada
+
+* 3- ¿Cuál es la asignatura con más inasistencia por carrera para el semestre e histórico?  
+R: Es inasistencias y no justificaciones, por lo que debemos realizar la tabla faltante (asistencia_asignatura o algo parecido). Ademas debemos ver el indicador de asistencia ¿Es lo mismo que falten 2/4 para una asignatura (50% inasistencia) que falten 2/40 (5% inasistencia)?
+
+* 4- Listado de justificaciones por carrera, clasificados por razones: medicas,extraprogrampaticas, defunciones, etc.    
+R: Falta la clasificacion en reg_justificacion. Motivo_just podria estar haciendo referencia a un campo libre, y estado podría estar haciendo referencia a un borrado lógico
+
+* 5- Historial de inasistencias por alumno   
+R: Si existiera la tabla asistencia_asignatura se podria tener el historico por alumno, ( la justificacion no corre, asumo que es para quedar presente )
+
+* 6- Número de dias de inasistencia de un alumno al semestre.  
+R: Si existiera la tabla asistencia_asignatura se podria calcular la cantidad de dias de inasistencia.
+
 
 
