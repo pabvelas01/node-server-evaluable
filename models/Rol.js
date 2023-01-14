@@ -11,6 +11,7 @@ const RolSchema= mongoose.Schema({
         default:Date.now()
     },
 });
+
 RolSchema.plugin(uniqueValidator);
 
 module.exports= mongoose.model('Rol',RolSchema)
