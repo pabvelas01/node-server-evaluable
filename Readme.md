@@ -36,3 +36,11 @@ curl http://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
 curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com", "password": "123456"}' http://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
 ```
 
+## Parte 3 Prueba de stress sobre user sistema
+![Alt text](img/1-%20prueba%20de%20stress%20jmetter.jpg)
+
+* Fichero testeo jmetter sobre api/user
+[label](img/Modulo%20Ingreso.jmx)
+
+
+
