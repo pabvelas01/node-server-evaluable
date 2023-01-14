@@ -43,11 +43,11 @@ curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com"
 [label](img/Modulo%20Ingreso.jmx)
 
 ## Parte 4 Enunciado Análisis de Base de Datos
-'''
+
 * 1- ¿Cuantas inasistencias tiene un alumno X en el semestre en curso?
  R: Falta una tabla que una asignatura con alumno, puede ser asistencia, para determinar
  las clases efectivas dictadas (pueden haber feriados o suspension de clases, lo que no aplicaria como
  inasistencia del alumno)  
-'''
+
 
 
