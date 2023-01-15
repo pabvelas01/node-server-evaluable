@@ -14,7 +14,7 @@ const UserSchema= mongoose.Schema({
     password: { type: String, required: true }
 });
 
-UserSchema.plugin(uniqueValidator);
+
 
 UserSchema.pre('save', async function(next) { // this line
     const user_here = this;
