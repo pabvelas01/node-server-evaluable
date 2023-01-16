@@ -21,19 +21,24 @@
 
 #### Instancia Desplegada AWS EC2, del repositorio actual
 
-* http://ec2-44-212-20-191.compute-1.amazonaws.com:4000/
+* https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/
 
 #
 ## Parte 2 Invocaciones Curl
 
 ### Listar Users
 ```
-curl http://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
+curl https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
 ```
 
 ### Ingresar Usuario a Sistema
 ```
-curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com", "password": "123456"}' http://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
+curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com", "password": "123456"}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
+```
+
+### Autentificar Usuario a Sistema
+```
+curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com", "password": "12345"}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/autentificacion
 ```
 
 ## Parte 3 Prueba de stress sobre user sistema
