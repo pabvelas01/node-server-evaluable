@@ -23,6 +23,32 @@ exports.crearCarrera= async (req,res)=>{
     }
     
 }
+
+exports.actualizarCarrera= async (req,res)=>{
+    try{
+        let carrera
+        // creamos nuestro producto
+        let nombre=req.body.nombre?req.body.nombre:null;
+        let nomenclatura=req.body.nomenclatura?req.body.nomenclatura:null;
+
+        let carreraExiste=await Carrera.findById(req.params.id);
+        if(!carreraExiste){
+            return res.status(400).send({status: "error" ,msg:"No existe carrera con id proporcionado"});
+        }
+        else{
+        carreraExiste.nombre=nombre;
+        carreraExiste.nomenclatura=nomenclatura;
+        //await carrera.save();
+        carrera =await Carrera.findByIdAndUpdate({_id:req.params.id},carreraExiste,{new:true}); 
+        res.status(200).send(carrera);
+        }
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).send('Hubo un error');
+    }
+    
+}
 /*
 exports.autentificarUsuario= async (req,res)=>{
     try{
@@ -64,6 +90,24 @@ exports.eliminarCarrera= async (req,res)=>{
        if(carrera){
            await Carrera.findByIdAndRemove({_id : req.params.id });
            res.status(200).send({msg:"Carrera eliminada con exito",status:"exito"}); 
+       }
+       else{
+        res.status(404).send({msg:"Carrera no existe",status:"error"});
+       }
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).send('Hubo un error');
+    }
+
+}
+
+exports.obtenerCarrera= async (req,res)=>{
+    try{
+       let carrera= await Carrera.findById(req.params.id);
+       if(carrera){
+           
+           res.status(200).send(carrera); 
        }
        else{
         res.status(404).send({msg:"Carrera no existe",status:"error"});
