@@ -13,11 +13,13 @@ app.use(cors());
 app.use('/api/rol',require('./routes/rol'));
 app.use('/api/user',require('./routes/user'));
 app.use('/api/autentificacion',require('./routes/autentificacion'));
-
+app.use('/api/carrera',require('./routes/carrera'));
+app.use('/api/alumno',require('./routes/alumno'));
+/*
 app.listen(4000, ()=>{
     console.log("El servidor esta corriendo perfectamente");
 });
-
+*/
 
 
 https.createServer({

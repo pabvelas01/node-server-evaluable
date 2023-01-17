@@ -41,6 +41,21 @@ curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com"
 curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com", "password": "12345"}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/autentificacion
 ```
 
+### Ingresar alumno a sistema, post 
+```
+curl -X POST -H "Content-Type: application/json" -d '{
+    "nombre" : "pablo",
+    "primer_apellido" : "velasquez",
+    "segundo_apellido": "gonzalez",
+    "sexo":"Masculino",
+    "carrera": "ingenieria civil en informatica"
+}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/alumno
+```
+### Listar alumnos, get 
+```
+curl https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/alumno
+```
+
 ## Parte 3 Prueba de stress sobre user sistema
 ![Alt text](img/1-%20prueba%20de%20stress%20jmetter.jpg)
 
