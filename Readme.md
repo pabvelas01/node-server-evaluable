@@ -54,20 +54,31 @@ curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com"
     </td>
     
 </tr>
+
 <tr>
-<td>get</td>
+<td>post</td>
     <td>
-    <code> 
-        curl -X POST -H "Content-Type: application/json" -d '{
+    
+        curl - k -X POST -H "Content-Type: application/json" -d '{
     "nombre" : "pablo",
     "primer_apellido" : "velasquez",
     "segundo_apellido": "gonzalez",
     "sexo":"Masculino",
     "carrera": "ingenieria civil en informatica"
 }' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/alumno
+    
+    </td>
+</tr>
+
+<tr>
+<td>get</td>
+    <td>
+    <code> 
+       curl -k https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
     </code>
     </td>
 </tr>
+
 </tbody>
 </table>
 
