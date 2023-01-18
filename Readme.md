@@ -26,21 +26,24 @@
 #
 ## Parte 2 Invocaciones Curl
 
-### Listar Users
+### Usuario Administrado (autentificado en github)
+
+##### get 
 ```
-curl https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
+curl -k https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
 ```
 
-### Ingresar Usuario a Sistema
+##### post 
 ```
-curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com", "password": "123456"}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
+curl -k -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com", "password": "123456"}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
 ```
 
-### Autentificar Usuario a Sistema
+### Autentificar Usuario a Sistema (login Curl)
+##### post
 ```
 curl -k -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com", "password": "12345"}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/autentificacion
 ```
-### Alumno Sistema
+### Alumno (CURL)
 ##### post 
 
 ```
@@ -73,6 +76,36 @@ curl -k -X PUT -H "Content-Type: application/json" -d '{
 curl -k -X DELETE https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/alumno/63c772c29b90afd3efd40ef5
 ```
 
+### Carrera (CURL)
+##### post 
+
+```
+curl -k -X POST -H "Content-Type: application/json" -d '{
+    "nombre" : "Carrera Nueva",
+    "nomenclatura" : "nw"
+}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/carrera
+```
+##### get (todos los alumno)  
+```
+curl -k https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/carrera
+```
+##### get (alumno específico)  
+```
+curl -k https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/carrera/63c71d800e7eb4d67e6e7d2a
+```
+
+##### put  
+```
+curl -k -X PUT -H "Content-Type: application/json" -d '{
+    "nombre" : "Ingenieria Sistemas",
+    "nomenclatura" : "Sist" 
+}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/carrera/63c71d800e7eb4d67e6e7d2a
+```
+
+##### delete
+```
+curl -k -X DELETE https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/alumno/63c772c29b90afd3efd40ef5
+```
 
 ## Parte 3 Prueba de stress sobre user sistema
 ![Alt text](img/1-%20prueba%20de%20stress%20jmetter.jpg)
