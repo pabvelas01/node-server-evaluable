@@ -1,4 +1,5 @@
 const Alumno= require('../models/Alumno');
+const Carrera= require('../models/Carrera');
 // es lo que llega req
 exports.crearAlumno= async (req,res)=>{
     try{
@@ -7,7 +8,14 @@ exports.crearAlumno= async (req,res)=>{
         let nombre=req.body.nombre?req.body.nombre:null;
         let primer_apellido=req.body.nombre?req.body.primer_apellido:null;
         let segundo_apellido=req.body.nombre?req.body.segundo_apellido:null;
+        let carrera=req.body.carrera?req.body.carrera:null;
+        let sexo=req.body.carrera?req.body.sexo:null;
 
+        let carreraExiste=await Carrera.find({nombre:carrera});
+        if (!carreraExiste){
+            return res.status(400).send({status: "error" ,msg:"Carrera ingresada no existe"});
+  
+        }
         let alumnoExiste=await Alumno.findOne({nombre:nombre,primer_apellido:primer_apellido,segundo_apellido:segundo_apellido});
         if(alumnoExiste){
             return res.status(400).send({status: "error" ,msg:"Ya existe alumno con nombres y apellidos ingresados"});
@@ -25,40 +33,6 @@ exports.crearAlumno= async (req,res)=>{
     }
     
 }
-/*
-exports.autentificarUsuario= async (req,res)=>{
-    try{
-        let usuario
-        //Obtener usuario por correo
-        if (Object.keys(req.body).length==0){
-            return res.status(404).send({status:"error",msg:"Debe ingresar email y contraseña"});
-        }
-        else{
-            // ya tiene email y contraseña en body
-            const {email,password}=req.body;
-            usuario=await Carrera.findOne({email:email});
-            if(usuario){
-                let pass_hasheada=await sha1(password);
-                if(usuario.password==pass_hasheada){
-                    return res.status(200).send({status:"exito",msg:"Usuario autentificado exitosamente"});
-                }
-                else{
-                    return res.status(404).send({status:"error",msg:"Contraseña no coincide"});
-                }
-            }
-            else{
-                return res.status(404).send({status:"error",msg:"email no esta en los registros"});
-            }
-
-        }
-        
-    }
-    catch(err){
-        console.log(err);
-            res.status(500).send('Hubo un error');
-    }
-}
-*/
 
 exports.eliminarAlumno= async (req,res)=>{
     try{
@@ -84,6 +58,62 @@ exports.listarAlumnos= async (req,res)=>{
         // creamos nuestro producto
         alumnos= await Alumno.find();
         res.status(200).send(alumnos);
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).send('Hubo un error');
+    }
+    
+}
+
+exports.obtenerAlumno= async (req,res)=>{
+    try{
+       let alumno= await Alumno.findById(req.params.id);
+       if(alumno){
+           
+           res.status(200).send(alumno); 
+       }
+       else{
+        res.status(404).send({msg:"Alumno no existe",status:"error"});
+       }
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).send('Hubo un error');
+    }
+
+}
+
+exports.actualizarAlumno= async (req,res)=>{
+    try{
+        let alumno
+        // creamos nuestro producto
+        let nombre=req.body.nombre?req.body.nombre:null;
+        let primer_apellido=req.body.nombre?req.body.primer_apellido:null;
+        let segundo_apellido=req.body.nombre?req.body.segundo_apellido:null;
+        let sexo=req.body.nombre?req.body.sexo:null;
+        let carrera=req.body.nombre?req.body.carrera:null;
+
+        let carreraExiste=await Carrera.findOne({nombre:carrera});
+        if(!carreraExiste){
+            return res.status(400).send({status: "error" ,msg:"No existe carrera con nombre proporcionado"});
+        }
+        else{
+        // buscar alumno
+        let alumno= await Alumno.findById(req.params.id);
+        if(!alumno){
+            return res.status(400).send({status: "error" ,msg:"No existe alumno con id proporcionado"});
+        }    
+        
+        alumno.nombre=nombre;
+        alumno.primer_apellido=primer_apellido;
+        alumno.segundo_apellido=segundo_apellido;
+        alumno.sexo=sexo;
+        alumno.carrera=carrera;
+        //await carrera.save();
+        alumno =await Alumno.findByIdAndUpdate({_id:req.params.id},alumno,{new:true}); 
+        res.status(200).send(alumno);
+        }
     }
     catch(err){
         console.log(err);
