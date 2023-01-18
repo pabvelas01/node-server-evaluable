@@ -43,19 +43,15 @@ curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com"
 
 ### Ingresar alumno a sistema, post 
 <table>
-<thead>
-<tr>
-    <th>
-    HTTP Verb
-    </th>
-    <th>
-    Curl
-    </th>
-</tr>
-</thead>
+
 <tbody>
 <tr>
-
+ <td>
+    HTTP Verb
+    </td>
+    <td>
+    Curl
+    </td>
     <td>get</td>
     <td>
     ``` 
