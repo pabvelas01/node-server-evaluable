@@ -38,54 +38,13 @@ curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com"
 
 ### Autentificar Usuario a Sistema
 ```
-curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com", "password": "12345"}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/autentificacion
+curl -k -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com", "password": "12345"}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/autentificacion
 ```
-
-### Ingresar alumno a sistema, post 
-<table>
-
-<tbody>
-<tr>
- <td>
-    HTTP Verb
-    </td>
-    <td>
-    Curl
-    </td>
-    
-</tr>
-
-<tr>
-<td>post</td>
-    <td>
-    ```
-    
-        curl - k -X POST -H "Content-Type: application/json" -d '{
-    "nombre" : "pablo",
-    "primer_apellido" : "velasquez",
-    "segundo_apellido": "gonzalez",
-    "sexo":"Masculino",
-    "carrera": "ingenieria civil en informatica"
-}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/alumno
-    
-    ```
-    </td>
-</tr>
-
-<tr>
-<td>get</td>
-    <td>
-    <code> 
-       curl -k https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
-    </code>
-    </td>
-</tr>
-
-</tbody>
-</table>
+### Alumno Sistema
+##### post 
 
 ```
-curl -X POST -H "Content-Type: application/json" -d '{
+curl -k -X POST -H "Content-Type: application/json" -d '{
     "nombre" : "pablo",
     "primer_apellido" : "velasquez",
     "segundo_apellido": "gonzalez",
@@ -93,10 +52,27 @@ curl -X POST -H "Content-Type: application/json" -d '{
     "carrera": "ingenieria civil en informatica"
 }' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/alumno
 ```
-### Listar alumnos, get 
+##### get  
 ```
-curl https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/alumno
+curl -k https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/alumno
 ```
+
+##### put  
+```
+curl -k -X PUT -H "Content-Type: application/json" -d '{
+    "nombre" : "pablo",
+    "primer_apellido" : "velasquez",
+    "segundo_apellido": "gonzalez",
+    "sexo":"Masculino",
+    "carrera": "ingenieria civil en informatica"
+}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/alumno/63c772c29b90afd3efd40ef5
+```
+
+##### delete
+```
+curl -k -X DELETE https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/alumno/63c772c29b90afd3efd40ef5
+```
+
 
 ## Parte 3 Prueba de stress sobre user sistema
 ![Alt text](img/1-%20prueba%20de%20stress%20jmetter.jpg)
