@@ -57,9 +57,9 @@ curl -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com"
 <tr>
 <td>get</td>
     <td>
-    ``` 
+    <code> 
         curl 
-    ``` 
+    </code>
     </td>
 </tr>
 </tbody>
