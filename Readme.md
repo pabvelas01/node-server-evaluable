@@ -26,7 +26,7 @@
 #
 ## Parte 2 Invocaciones Curl
 
-### Usuario Administrado (autentificado en github)
+### Usuario Administrador (autentificado en github)
 
 ##### get 
 ```
@@ -36,6 +36,11 @@ curl -k https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
 ##### post 
 ```
 curl -k -X POST -H "Content-Type: application/json" -d '{"email": "pablo@gmail.com", "password": "123456"}' https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user
+```
+
+##### delete
+```
+curl -k -X DELETE https://ec2-44-212-20-191.compute-1.amazonaws.com:4000/api/user/63c23fcd9e84f46b0aa20e0a
 ```
 
 ### Autentificar Usuario a Sistema (login Curl)

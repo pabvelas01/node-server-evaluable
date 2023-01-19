@@ -71,3 +71,21 @@ exports.listarUsuarios= async (req,res)=>{
     }
     
 }
+
+exports.eliminarUser= async (req,res)=>{
+    try{
+       let user= await User.findById(req.params.id);
+       if(user){
+           await User.findByIdAndRemove({_id : req.params.id });
+           res.status(200).send({msg:"Usuario admin eliminado con exito",status:"exito"}); 
+       }
+       else{
+        res.status(404).send({msg:"Usuario admin no existe",status:"error"});
+       }
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).send('Hubo un error');
+    }
+
+}
