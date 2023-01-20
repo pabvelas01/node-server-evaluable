@@ -14,7 +14,10 @@ app.use('/api/rol',require('./routes/rol'));
 app.use('/api/user',require('./routes/user'));
 app.use('/api/autentificacion',require('./routes/autentificacion'));
 app.use('/api/carrera',require('./routes/carrera'));
+app.use('/api/carrera-query',require('./routes/carrera-query'));
+app.use('/api/alumno-query',require('./routes/alumno-query'));
 app.use('/api/alumno',require('./routes/alumno'));
+
 /*
 app.listen(4000, ()=>{
     console.log("El servidor esta corriendo perfectamente");

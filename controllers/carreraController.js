@@ -124,8 +124,26 @@ exports.listarCarreras= async (req,res)=>{
     try{
         let carreras 
         // creamos nuestro producto
-        carreras= await Carrera.find();
-        res.status(200).send(carreras);
+        let {nombre,nomenclatura}=req.body
+        if (Object.keys(req.body).length==0){
+           carreras= await Carrera.find();
+           res.status(200).send(carreras);
+       }
+       else{
+           // va con filtros 
+          let class_query={};
+          if (typeof nombre !='undefined' && nombre.length>0){
+            let c={nombre:{ $regex: '' + nombre, $options: 'i' }}
+            Object.assign(class_query,c);
+          }
+          if (typeof nomenclatura !='undefined' && nomenclatura.length>0){
+            let c={nomenclatura:{ $regex: '' + nomenclatura, $options: 'i' }}
+            Object.assign(class_query,c);
+          }
+          console.log(class_query);
+           carreras= await Carrera.find(class_query).exec();
+           res.status(200).send(carreras);
+       }
     }
     catch(err){
         console.log(err);
